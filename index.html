@@ -9,134 +9,103 @@
 	<body>
 		<main class="frame">
 			<!-- Background container matches Figma mobile frame ~393px -->
-			<header class="topbar">
-				<div class="top-left">
-					<div class="status-dot"></div>
+			<div id="game-modal" class="modal" style="display:none;">
+				<div class="modal-content">
+					<button class="modal-close" aria-label="Luk" style="display:flex;align-items:center;justify-content:center;position:absolute;top:18px;right:18px;width:36px;height:36px;background:var(--accent);border:none;border-radius:50%;z-index:10;cursor:pointer;">
+												<svg width="22" height="22" viewBox="0 0 22 22" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+													<line x1="6" y1="6" x2="16" y2="16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+													<line x1="16" y1="6" x2="6" y2="16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+												</svg>
+					</button>
+					<div class="modal-body"></div>
 				</div>
-				<div class="time">17.32</div>
-				<div class="top-right icons">
-					<div class="icon small"></div>
-					<div class="icon small"></div>
-					<div class="icon small dim"></div>
-					<div class="icon small"></div>
+			</div>
+			<header class="topbar">
+				<div style="position:relative;width:100%;height:48px;">
+					<button id="back-arrow" aria-label="Tilbage" style="position:absolute;left:12px;top:8px;background:transparent;border:none;padding:0;cursor:pointer;display:flex;align-items:center;z-index:2;">
+						<svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+							<polyline points="18,6 10,14 18,22" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
+					<input id="search-bar" type="text" placeholder="Søg spil..." style="position:absolute;right:12px;top:8px;padding:7px 16px;border-radius:18px;border:none;background:#FFF7F7;color:var(--accent);font-family:'Afacad',sans-serif;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,0.06);width:140px;outline:none;z-index:2;" />
+					<div class="icons" style="position:absolute;right:170px;top:8px;display:flex;align-items:center;gap:12px;">
+						<div class="icon small"></div>
+						<div class="icon small"></div>
+						<div class="icon small dim"></div>
+						<div class="icon small"></div>
+					</div>
 				</div>
 			</header>
 
+
 			<section class="hero">
-				<h2 class="hero-title">Nye Spil</h2>
-				<div class="cards variant">
-					<article class="card small">
-						<div class="card-media">
-							<img src="https://placehold.co/84x89" alt="spil" />
-							<div class="badge-outline"></div>
-						</div>
-						<button class="btn btn-small">Detaljer</button>
-						<div class="ribbon">NYT</div>
-					</article>
-
-					<article class="card small">
-						<div class="card-media">
-							<img src="https://placehold.co/84x89" alt="spil" />
-							<div class="badge-outline"></div>
-						</div>
-						<button class="btn btn-small">Detaljer</button>
-						<div class="ribbon">NYT</div>
-					</article>
-
-					<article class="card large center">
-						<div class="card-media">
-							<img src="https://placehold.co/102x108" alt="featured" />
-							<div class="badge-outline large"></div>
-						</div>
-						<button class="btn btn-medium">Detaljer</button>
-					</article>
+				<div class="filters center-row">
+					<div class="filter-pill">
+						<label for="filter-duration">Varighed</label>
+						<select id="filter-duration">
+							<option value="">Alle</option>
+							<option value="<=30">Op til 30 min</option>
+							<option value="<=60">Op til 1 time</option>
+							<option value="<=90">Op til 1,5 time</option>
+							<option value=">90">Over 1,5 time</option>
+						</select>
+					</div>
+					<div class="filter-pill">
+						<label for="filter-players">Antal</label>
+						<select id="filter-players"><option value="">Alle</option></select>
+					</div>
+					<div class="filter-pill">
+						<label for="filter-genre">Genre</label>
+						<select id="filter-genre"><option value="">Alle</option></select>
+					</div>
+					<div class="filter-pill">
+						<label for="filter-age">Alder</label>
+						<select id="filter-age"><option value="">Alle</option></select>
+					</div>
+					<div class="filter-pill">
+						<label for="filter-mood">Stemning</label>
+						<select id="filter-mood"><option value="">Alle</option></select>
+					</div>
+					<button id="filter-clear" class="btn">Nulstil</button>
 				</div>
-			</section>
-
-			<section class="filters">
-				<div class="filter-pill">Varighed</div>
-				<div class="filter-pill">Antal</div>
-				<div class="filter-pill">Genre</div>
-				<div class="filter-pill">Alder</div>
-				<div class="filter-pill">Stemning</div>
+				<h2 class="hero-title">Nye Spil</h2>
+				<div class="cards variant"></div>
 			</section>
 
 			<section class="collections">
 				<div class="collection">
-					<h3>Månedens spil</h3>
-					<div class="cards">
-						<article class="card small">
-							<div class="card-media"><img src="https://placehold.co/84x89" alt=""/></div>
-							<button class="btn btn-small">Detaljer</button>
-						</article>
-						<article class="card small">
-							<div class="card-media"><img src="https://placehold.co/84x89" alt=""/></div>
-							<button class="btn btn-small">Detaljer</button>
-						</article>
-						<article class="card large center">
-							<div class="card-media"><img src="https://placehold.co/102x108" alt=""/></div>
-							<button class="btn btn-medium">Detaljer</button>
-						</article>
-					</div>
+					<h3>Månedens Spil</h3>
+					<div class="cards"></div>
 				</div>
-
 				<div class="collection">
-					<h3>Glemte spil</h3>
-					<div class="cards">
-						<article class="card small">
-							<div class="card-media"><img src="https://placehold.co/84x89" alt=""/></div>
-							<button class="btn btn-small">Detaljer</button>
-							<div class="ribbon">NYT</div>
-						</article>
-						<article class="card small">
-							<div class="card-media"><img src="https://placehold.co/84x89" alt=""/></div>
-							<button class="btn btn-small">Detaljer</button>
-						</article>
-						<article class="card large center">
-							<div class="card-media"><img src="https://placehold.co/102x108" alt=""/></div>
-							<button class="btn btn-medium">Detaljer</button>
-						</article>
-					</div>
+					<h3>Glemte Favoritter</h3>
+					<div class="cards"></div>
 				</div>
-
 				<div class="collection">
-					<h3>Populære spil</h3>
-					<div class="cards">
-						<article class="card small">
-							<div class="card-media"><img src="https://placehold.co/84x89" alt=""/></div>
-							<button class="btn btn-small">Detaljer</button>
-						</article>
-						<article class="card small">
-							<div class="card-media"><img src="https://placehold.co/84x89" alt=""/></div>
-							<button class="btn btn-small">Detaljer</button>
-						</article>
-						<article class="card large center">
-							<div class="card-media"><img src="https://placehold.co/102x108" alt=""/></div>
-							<button class="btn btn-medium">Detaljer</button>
-						</article>
-					</div>
+					<h3>Populære Spil</h3>
+					<div class="cards"></div>
 				</div>
 			</section>
 
-			<div class="cta">
-				<button class="btn btn-cta">Se alle spil</button>
-			</div>
 
+			<!-- All dynamic cards and images will be rendered by js.js using app.json -->
 			<nav class="bottom-nav">
 				<div class="nav-item">
 					<div class="nav-icon">
 						<div class="icon-sim"></div>
 					</div>
-					<div class="nav-label">Book</div>
 				</div>
 				<div class="nav-item center-profile">
-					<img class="profile-img" src="https://placehold.co/76x76" alt="profil" />
-				</div>
-				<div class="nav-item">
-					<div class="nav-icon"><img src="https://placehold.co/39x39" alt=""/></div>
-					<div class="nav-label">Udforsk</div>
 				</div>
 			</nav>
+
+			<footer class="site-footer">
+				<img class="footer-logo" src="images/Spil cafe logo.png" alt="Spil Cafe Logo" />
+			</footer>
+		</main>
+	</body>
+	<script src="js/js.js" defer></script>
+	</html>
 		</main>
 	</body>
 		<script src="js/js.js" defer></script>

@@ -1,54 +1,410 @@
+/* Modal styles */
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.25);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+}
+.modal-content {
+	background: #fff;
+	border-radius: 24px;
+	box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+	padding: 32px 24px 24px 24px;
+	max-width: 340px;
+	width: 90vw;
+	font-family: 'Afacad', sans-serif;
+	color: var(--accent);
+	position: relative;
+	text-align: left;
+}
+.modal-close {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	background: var(--accent);
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	font-size: 22px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal-body {
+	margin-top: 12px;
+	font-size: 16px;
+	color: var(--accent);
+}
+/* Force all text to accent color */
+* {
+	color: var(--accent) !important;
+}
+.site-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: #fff;
+	box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px 0 0 0;
+	min-height: 110px;
+	z-index: 100;
+	position: relative;
+}
+.site-footer::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+		transform: translateX(-50%);
+		top: -40px;
+		width: 220px;
+		height: 80px;
+		background: #fff;
+		border-top-left-radius: 110px 80px;
+		border-top-right-radius: 110px 80px;
+	z-index: 99;
+	box-shadow: none;
+}
+.footer-logo {
+	height: 130px;
+	width: auto;
+	max-width: 400px;
+	object-fit: contain;
+	margin-top: -60px;
+	margin-bottom: -24px;
+	position: relative;
+	z-index: 1000;
+}
+body {
+	padding-bottom: 0 !important;
+	background: #E9E0E0;
+}
+body, h1, h2, h3, h4, h5, h6, p, label, button, select, input, .nav-label, .time, .collection h3, .hero-title, .btn, .btn-small, .btn-medium, .btn-cta {
+	font-family: 'Afacad', sans-serif;
+	color: var(--accent);
+}
+.filters .filter-pill,
+.filters .filter-pill label,
+.filters .filter-pill select {
+	font-family: 'Afacad', sans-serif;
+	color: var(--accent);
+}
+/* Centered filter row above content */
+.filters.center-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	margin: 0 auto 18px auto;
+	width: 100%;
+	flex-wrap: wrap;
+	z-index: 2;
+}
+.filters.center-row .filter-pill {
+	margin: 0;
+}
+.filters.center-row #filter-clear {
+	margin-left: 16px;
+}
+@media (max-width: 600px) {
+	.filters.center-row {
+		flex-wrap: wrap;
+		gap: 8px;
+		padding-right: 8px;
+	}
+	.filters.center-row .filter-pill {
+		min-width: 120px;
+	}
+}
 :root{
 	--frame-width: 393px;
-	--bg-start: #E9E0E0;
+	--bg-start: #F5F3F4;
 	--accent: #D93D42;
-	--card-radius: 28px;
-	--card-shadow: 0 3.3px 8.94px rgba(0,0,0,0.23);
+	--card-radius: 16px;
+	--card-shadow: 0 8px 20px rgba(0,0,0,0.08);
+	/* Her kan du nemt ændre kortets størrelse og billedets højde */
+	--card-size: 110px; /* Ændr denne for at gøre kortet større eller mindre */
+	--card-image-height: 60px; /* Ændr denne for at gøre billedet større eller mindre */
 }
 
-*{box-sizing:border-box}
-body{font-family: 'Avenir Next', system-ui, sans-serif; display:flex; justify-content:center; background:var(--bg-start); padding:20px}
-.frame{width:var(--frame-width); position:relative; background:linear-gradient(180deg,#E9E0E0 0% , #fff 100%); min-height:820px; overflow:hidden}
-
-/* Top bar */
-.topbar{position:absolute; left:0; top:-10px; width:100%; padding:10px; display:flex; align-items:center; gap:10px}
-.topbar .time{flex:1; text-align:left; font-weight:700; font-family: 'Afacad', sans-serif}
-.topbar .icons{display:flex; gap:6px; align-items:center}
-.topbar .icon{width:19px;height:12px;background:#222}
-.topbar .icon.dim{opacity:0.35}
+	/* Juster størrelsen her! */
+	:root {
+	  --card-size: 110px;      /* Kortets bredde og højde */
+	  --card-image-height: 60px; /* Billedets højde inde i kortet */
+	  --card-radius: 16px;
+	  --accent: #D93D42;
+	}
 .status-dot{width:12px;height:12px;border-radius:50%;border:2px solid #333;margin-left:6px}
 
 /* Hero / sections */
-.hero{padding:156px 10px 10px}
-.hero-title{font-family:'Afacad',sans-serif;font-size:24px;text-transform:uppercase;margin:0 0 6px}
-.cards{display:flex; gap:16px; align-items:flex-start}
-.cards.variant{height:161px}
-
-.card{background:#fff; box-shadow:var(--card-shadow); border-radius:34px; width:169px; height:173px; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center}
-.card.small{width:169px;height:173px;border-radius:34px}
-.card.large{width:169px;height:173px;border-radius:34px}
+.hero{padding:120px 14px 12px}
+.hero-title{font-family:'Afacad',sans-serif;font-size:22px;margin:0 0 8px;color:#222}
+.cards {
+	display: flex;
+	gap: auto;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+}
 .card.center{margin-top:0}
-.card .card-media{padding:12px 12px 6px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden}
-/* increase image area so pictures fill cards better */
-.card.small .card-media{height:140px; padding:10px}
-.card.large .card-media{height:150px; padding:12px}
-.card img{display:block; width:100%; height:100%; object-fit:cover; object-position:center center}
-.badge-outline{position:absolute; right:12px; top:12px; width:20px; height:20px; border:1.6px solid #333; border-radius:4px}
-.badge-outline.large{width:24px;height:24px;border:2px solid #333}
+/* leave space top-right for favorite heart: increase top and right padding */
+/* image area: more vertical space so image is larger but we keep right padding for heart */
+.card .card-media{padding:12px 48px 10px 12px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden}
+/* increase image area so pictures fill cards better while keeping space for the heart */
+.card.small .card-media{height:120px; padding:12px 46px 10px 12px}
+.card.large .card-media{height:140px; padding:12px 48px 10px 12px}
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: flex-start;
+	justify-content: center;
+	width: 100%;
+	padding: 12px 0;
+	background: linear-gradient(
+		to bottom,
+		#E9E0E0 0%,
+		#ECECEC 20%,
+		#ECECEC 80%,
+		#E9E0E0 100%
+	);
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
 
-.ribbon{position:absolute; left:-6%; top:8%; transform:rotate(-30deg); transform-origin:left top; background:var(--accent); color:#fff; padding:6px 10px; font-family:'Luckiest Guy',sans-serif; font-size:13px; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.15)}
+@media (max-width: 600px) {
+	.cards {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overflow-y: visible;
+		gap: 8px;
+		justify-content: flex-start;
+		padding-bottom: 16px;
+	}
+	.card {
+		flex: 0 0 var(--card-size);
+		margin-right: 8px;
+	}
+}
+.card {
+	box-shadow: var(--card-shadow);
+	border-radius: var(--card-radius);
+	width: var(--card-size); /* Kortets bredde */
+	height: var(--card-size); /* Kortets højde */
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+/* Du behøver kun én card-klasse nu! */
+.card.center{margin-top:0}
+
+/* Favorite heart button in card corner */
+.card .card-media {
+	/* Billedets område - juster højden med variabel */
+	height: auto;
+	width: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+	background: none;
+	padding-right: 32px; /* plads til hjerte */
+}
+.card img{
+	display:block;
+	width:auto;
+	height:auto;
+	max-width:100%;
+	max-height:100%;
+	object-fit:contain;
+	object-position:center center;
+	transition:transform .18s ease;
+}
+.badge-outline{position:absolute; right:24px; top:4px; width:10px; height:10px; border:1px solid #666; border-radius:3px; background:rgba(255,255,255,0.7)}
+.badge-outline.large{width:12px;height:12px;border:1px solid #666}
+
+.hero .card{overflow:hidden}
+
+/* Favorite heart button in card corner */
+.card .fav {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 20px;
+	height: 20px;
+	border-radius: 6px;
+	background: rgba(255,255,255,0.9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(0,0,0,0.06);
+	box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+	cursor: pointer;
+	padding: 2px;
+	transition: transform .12s ease, background .12s ease;
+}
+.card .fav img {
+	width: fill;
+	height: fill;
+	display: block;
+}
+.card .fav:active{transform:scale(.96)}
+.card.favorited .fav{background: rgba(217,61,66,0.06); border-color: rgba(217,61,66,0.12)}
+.card.favorited .fav img{ /* make icon appear red using filter */
+	filter: invert(19%) sepia(79%) saturate(600%) hue-rotate(-10deg) brightness(95%) contrast(92%);
+}
 
 .btn{border:none; cursor:pointer; font-family:'Afacad',sans-serif}
-.btn-small{position:absolute; bottom:10px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:7px;border-radius:10px; font-weight:700}
-.btn-medium{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:9px;border-radius:12px; font-weight:700}
+.btn-small, .btn-medium {
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--accent);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-size: 12px;
+}
 .btn-cta{background:var(--accent); color:#fff; border-radius:22px; padding:8px 18px; border:1px solid #C7C3C3}
+.card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+.card:hover img {
+	transform: scale(1.02);
+}
+.card {
+	background: #fff;
+	border-radius: var(--card-radius);
+	width: var(--card-size);
+	height: var(--card-size);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	transition: transform .18s ease, box-shadow .18s ease;
+	box-shadow:0 4px 10px rgba(0,0,0,0.06);
+	cursor:pointer;
+	padding:4px;
+	transition:transform .12s ease, background .12s ease;
+}
+.card .fav img{width:16px;height:16px;display:block}
+.card .fav:active{transform:scale(.96)}
+.card.favorited .fav{background: rgba(217,61,66,0.06); border-color: rgba(217,61,66,0.12)}
+.card.favorited .fav img{ /* make icon appear red using filter */
+	filter: invert(19%) sepia(79%) saturate(600%) hue-rotate(-10deg) brightness(95%) contrast(92%);
+}
 
-.filters{position:absolute; left:20px; top:113px; display:flex; gap:10px}
-.filter-pill{background:#FFF7F7; box-shadow:0 4px 4px rgba(0,0,0,0.25); border-radius:30px; padding:4px 14px; font-weight:600}
+.btn{border:none; cursor:pointer; font-family:'Afacad',sans-serif}
+.btn-small{position:absolute; bottom:10px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:6px 10px;border-radius:10px; font-weight:700; font-size:13px}
+.btn-medium{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:8px 12px;border-radius:12px; font-weight:700; font-size:14px}
+.btn-cta{background:var(--accent); color:#fff; border-radius:22px; padding:8px 18px; border:1px solid #C7C3C3}
+.card:hover{transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,0.08)}
+.card:hover img{transform:scale(1.03)}
+
+.card{background:#fff; box-shadow:var(--card-shadow); border-radius:var(--card-radius); width:150px; height:150px; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; transition:transform .18s ease, box-shadow .18s ease}
+.card.large .card-media{height:80px; padding:8px 36px 6px 8px}
+.card img{
+    display:block;
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    object-position:center center;
+    transition:transform .18s ease;
+}
+.badge-outline{position:absolute; right:44px; top:8px; width:14px; height:14px; border:1.2px solid #666; border-radius:4px; background:rgba(255,255,255,0.7)}
+.badge-outline.large{width:18px;height:18px;border:1.4px solid #666}
+
+.hero .card{overflow:hidden}
+
+/* Favorite heart button in card corner */
+.card .fav{
+    position:absolute;
+    top:6px;
+    right:6px;
+    width:22px;
+    height:22px;
+    border-radius:7px;
+    background:rgba(255,255,255,0.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(0,0,0,0.06);
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+    cursor:pointer;
+    padding:2px;
+    transition:transform .12s ease, background .12s ease;
+}
+.card .fav img{width:12px;height:12px;display:block}
+.card .fav:active{transform:scale(.96)}
+.card.favorited .fav{background: rgba(217,61,66,0.06); border-color: rgba(217,61,66,0.12)}
+.card.favorited .fav img{ /* make icon appear red using filter */
+    filter: invert(19%) sepia(79%) saturate(600%) hue-rotate(-10deg) brightness(95%) contrast(92%);
+}
+
+.btn{border:none; cursor:pointer; font-family:'Afacad',sans-serif}
+.btn-small{position:absolute; bottom:4px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:4px 8px;border-radius:10px; font-weight:700; font-size:12px}
+.btn-medium{position:absolute; bottom:6px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:6px 10px;border-radius:12px; font-weight:700; font-size:13px}
+.btn-cta{background:var(--accent); color:#fff; border-radius:22px; padding:8px 18px; border:1px solid #C7C3C3}
+.card:hover{transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,0.08)}
+.card:hover img{transform:scale(1.03)}
+.filters {
+	position: static;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin: 0 auto;
+	margin-top: 12px;
+	margin-bottom: 8px;
+	width: 100%;
+	z-index: 2;
+}
+.filter-pill{background:#FFF7F7; box-shadow:0 6px 12px rgba(0,0,0,0.06); border-radius:28px; padding:6px 12px; font-weight:600; color:#333}
+/* New: style for select inside filter pills */
+.filter-pill label{display:block;font-size:10px;color:#666;margin-bottom:4px}
+.filter-pill select{background:transparent;border:none;padding:6px 8px;border-radius:10px;font-weight:700;color:#222}
+.filter-pill select:focus{outline:none; box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.filters{flex-wrap:wrap; display:flex; justify-content:space-between; gap:8px}
+.filters .filter-group{display:flex; gap:8px; align-items:center; flex-wrap:wrap; flex:1}
+.filters #filter-clear{margin-left:12px; align-self:center; background:transparent; border:1px solid rgba(0,0,0,0.06); padding:6px 10px; border-radius:12px}
+.filters #filter-clear:hover{background:rgba(0,0,0,0.04)}
+
+@media (max-width:600px){
+	.filters{padding-right:12px}
+	.filters .filter-group{width:100%; overflow-x:auto}
+	.filters #filter-clear{margin-top:8px}
+}
 
 .collections{padding:10px}
 .collection{margin-top:18px}
-.collection h3{font-family:'Afacad',sans-serif;font-size:24px;margin:0 0 8px}
+.collection h3{font-family:'Afacad',sans-serif;font-size:20px;margin:0 0 8px;color:#222}
 
 .cta{position:absolute; left:100px; top:1140px}
 
@@ -62,3 +418,53 @@ body{font-family: 'Avenir Next', system-ui, sans-serif; display:flex; justify-co
 	body{padding:6px}
 	.frame{width:100%; max-width:393px}
 }
+
+/* --- Override: Make card detail buttons look like the CTA button --- */
+/* This is appended last so it overrides earlier, duplicate rules. */
+.card .btn, .card .btn-small, .card .btn-medium {
+	position: absolute;
+	bottom: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--accent);
+	color: #fff;
+	padding: 8px 14px;
+	border-radius: 18px;
+	border: 1px solid #C7C3C3;
+	font-weight: 700;
+	font-size: 13px;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.card .btn.small-inline, .card .btn-medium.small-inline {
+	padding: 6px 10px;
+	border-radius: 12px;
+}
+
+/* end override */
+
+/* Final force-override: ensure all card buttons look identical to CTA */
+.card .btn, .card .btn-small, .card .btn-medium, .card .btn-cta {
+	background: var(--accent) !important;
+	color: #fff !important;
+	padding: 8px 14px !important;
+	border-radius: 18px !important;
+	border: 1px solid #C7C3C3 !important;
+	font-weight: 700 !important;
+	font-size: 13px !important;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.06) !important;
+	position: absolute !important;
+	bottom: 8px !important;
+	left: 50% !important;
+	transform: translateX(-50%) !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+/* make sure hover/active states are consistent */
+.card .btn:hover, .card .btn-small:hover, .card .btn-medium:hover, .card .btn-cta:hover {
+	filter: brightness(0.97) !important;
+}
+
