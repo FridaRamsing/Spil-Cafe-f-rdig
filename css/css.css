@@ -1,0 +1,64 @@
+:root{
+	--frame-width: 393px;
+	--bg-start: #E9E0E0;
+	--accent: #D93D42;
+	--card-radius: 28px;
+	--card-shadow: 0 3.3px 8.94px rgba(0,0,0,0.23);
+}
+
+*{box-sizing:border-box}
+body{font-family: 'Avenir Next', system-ui, sans-serif; display:flex; justify-content:center; background:var(--bg-start); padding:20px}
+.frame{width:var(--frame-width); position:relative; background:linear-gradient(180deg,#E9E0E0 0% , #fff 100%); min-height:820px; overflow:hidden}
+
+/* Top bar */
+.topbar{position:absolute; left:0; top:-10px; width:100%; padding:10px; display:flex; align-items:center; gap:10px}
+.topbar .time{flex:1; text-align:left; font-weight:700; font-family: 'Afacad', sans-serif}
+.topbar .icons{display:flex; gap:6px; align-items:center}
+.topbar .icon{width:19px;height:12px;background:#222}
+.topbar .icon.dim{opacity:0.35}
+.status-dot{width:12px;height:12px;border-radius:50%;border:2px solid #333;margin-left:6px}
+
+/* Hero / sections */
+.hero{padding:156px 10px 10px}
+.hero-title{font-family:'Afacad',sans-serif;font-size:24px;text-transform:uppercase;margin:0 0 6px}
+.cards{display:flex; gap:16px; align-items:flex-start}
+.cards.variant{height:161px}
+
+.card{background:#fff; box-shadow:var(--card-shadow); border-radius:34px; width:169px; height:173px; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center}
+.card.small{width:169px;height:173px;border-radius:34px}
+.card.large{width:169px;height:173px;border-radius:34px}
+.card.center{margin-top:0}
+.card .card-media{padding:12px 12px 6px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden}
+/* increase image area so pictures fill cards better */
+.card.small .card-media{height:140px; padding:10px}
+.card.large .card-media{height:150px; padding:12px}
+.card img{display:block; width:100%; height:100%; object-fit:cover; object-position:center center}
+.badge-outline{position:absolute; right:12px; top:12px; width:20px; height:20px; border:1.6px solid #333; border-radius:4px}
+.badge-outline.large{width:24px;height:24px;border:2px solid #333}
+
+.ribbon{position:absolute; left:-6%; top:8%; transform:rotate(-30deg); transform-origin:left top; background:var(--accent); color:#fff; padding:6px 10px; font-family:'Luckiest Guy',sans-serif; font-size:13px; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.15)}
+
+.btn{border:none; cursor:pointer; font-family:'Afacad',sans-serif}
+.btn-small{position:absolute; bottom:10px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:7px;border-radius:10px; font-weight:700}
+.btn-medium{position:absolute; bottom:12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; padding:9px;border-radius:12px; font-weight:700}
+.btn-cta{background:var(--accent); color:#fff; border-radius:22px; padding:8px 18px; border:1px solid #C7C3C3}
+
+.filters{position:absolute; left:20px; top:113px; display:flex; gap:10px}
+.filter-pill{background:#FFF7F7; box-shadow:0 4px 4px rgba(0,0,0,0.25); border-radius:30px; padding:4px 14px; font-weight:600}
+
+.collections{padding:10px}
+.collection{margin-top:18px}
+.collection h3{font-family:'Afacad',sans-serif;font-size:24px;margin:0 0 8px}
+
+.cta{position:absolute; left:100px; top:1140px}
+
+/* Bottom nav */
+.bottom-nav{position:fixed; left:50%; transform:translateX(-50%); bottom:10px; width:365px; display:flex; justify-content:space-between; align-items:center; padding:10px}
+.nav-item{display:flex; flex-direction:column; align-items:center; gap:4px}
+.profile-img{width:76px;height:76px;border-radius:999px}
+
+/* Responsive small adjustments */
+@media (max-width:420px){
+	body{padding:6px}
+	.frame{width:100%; max-width:393px}
+}
